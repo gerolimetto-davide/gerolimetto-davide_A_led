@@ -5,7 +5,7 @@ int led4 = 8;
 int led5 = 10;
 int led6 = 12;
 int tempo = 1000;
-void fermi(void) 
+void fermi() 
 {
   digitalWrite(led1,HIGH);
   digitalWrite(led2,LOW);
@@ -15,7 +15,7 @@ void fermi(void)
   digitalWrite(led6,HIGH);
 }
 
-void staDiventandoVerde(void) 
+void staDiventandoVerde() 
 {
   digitalWrite(led1,LOW);
   digitalWrite(led2,HIGH);
@@ -25,7 +25,7 @@ void staDiventandoVerde(void)
   digitalWrite(led6,LOW);
 }
 
-void andare(void) 
+void andare() 
 {
   digitalWrite(led1,LOW);
   digitalWrite(led2,LOW);
@@ -35,7 +35,7 @@ void andare(void)
   digitalWrite(led6,LOW);
 }
 
-void giallo(void) 
+void giallo() 
 {
   digitalWrite(led1,HIGH);
   digitalWrite(led2,HIGH);
@@ -44,7 +44,7 @@ void giallo(void)
   digitalWrite(led5,HIGH);
   digitalWrite(led6,LOW);
 }
-void ledLampeggiante(void)
+void ledLampeggiante()
 {
   digitalWrite(led3,LOW);
   delay(300);
@@ -54,7 +54,8 @@ void ledLampeggiante(void)
 
 void setup() {
   // put your setup code here, to run once:
-  
+Serial.begin(9600);
+Serial.print("seriale attivato");  
 pinMode(led1, OUTPUT);
 pinMode(led2, OUTPUT);
 pinMode(led3, OUTPUT);
@@ -65,6 +66,13 @@ pinMode(led6, OUTPUT);
 
 void loop() {
   // put your main code here, to run repeatedly:
+ 
+if(Serial.available()>0)
+{
+  incomingByte = Serial.readString();
+  Serial.print("I received");
+  Serial.println(incomingByte.toInt());
+}
 fermi();
 delay(1000);
 staDiventandoVerde ();
