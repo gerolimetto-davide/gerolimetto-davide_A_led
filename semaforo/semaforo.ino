@@ -5,7 +5,6 @@ int led4 = 8;
 int led5 = 10;
 int led6 = 12;
 String nlampeggio;
-//ciao
 int tempo = 1000;
 
 void loop() {
