@@ -1,10 +1,13 @@
-int led1 = 6;
-int led2 = 4;
-int led3 = 2;
-int led4 = 8;
-int led5 = 10;
-int led6 = 12;
+int ledRosso = 6;
+int ledGiallo = 4;
+int ledVerde = 2;
+int ledRosso2 = 8;
+int ledGialloo2 = 10;
+int ledVerde2 = 12;
 String nlampeggio;
+String tRosso;
+String tGiallo;
+String tverde;
 int tempo = 1000;
 
 void loop() {
@@ -16,87 +19,109 @@ if(Serial.available()>0)
   Serial.println("I received");
   Serial.println(nlampeggio.toInt());
 }
+if(Serial.available()>0)
+{
+  trosso = Serial.readString();
+  Serial.println("I received");
+  Serial.println(trosso.toInt());
+}
+if(Serial.available()>0)
+{
+  tgiallo = Serial.readString();
+  Serial.println("I received");
+  Serial.println(tgiallo.toInt());
+}
+if(Serial.available()>0)
+{
+  tverde = Serial.readString();
+  Serial.println("I received");
+  Serial.println(tverde.toInt());
+}
 fermi();
 delay(5000);
-ledLampeggiante6();
-ledLampeggiante6();
-ledLampeggiante6();
-ledLampeggiante6();
+ledLampeggianteVerde2();
+ledLampeggianteVerde2();
+ledLampeggianteVerde2();
+ledLampeggianteVerde2();
+
 staDiventandoVerde ();
 delay(2000);
+
 andare();
 delay(3000);
-ledLampeggiante();
-ledLampeggiante();
-ledLampeggiante();
-ledLampeggiante();
+
+ledLampeggianteVerde();
+ledLampeggianteVerde();
+ledLampeggianteVerde();
+ledLampeggianteVerde();
+
 giallo();
 delay(4000);
 }
 
 void fermi() 
 {
-  digitalWrite(led1,HIGH);
-  digitalWrite(led2,LOW);
-  digitalWrite(led3,LOW);
-  digitalWrite(led4,LOW);
-  digitalWrite(led5,LOW);
-  digitalWrite(led6,HIGH);
+  digitalWrite(ledRosso,HIGH);
+  digitalWrite(ledGiallo,LOW);
+  digitalWrite(ledVerde,LOW);
+  digitalWrite(ledRosso2,LOW);
+  digitalWrite(ledGiallo2,LOW);
+  digitalWrite(ledVerde2,HIGH);
 }
 
 void staDiventandoVerde() 
 {
-  digitalWrite(led1,HIGH);
-  digitalWrite(led2,HIGH);
-  digitalWrite(led3,LOW);
-  digitalWrite(led4,LOW);
-  digitalWrite(led5,HIGH);
-  digitalWrite(led6,LOW);
+  digitalWrite(ledRosso,HIGH);
+  digitalWrite(ledGiallo,HIGH);
+  digitalWrite(ledVerde,LOW);
+  digitalWrite(ledRosso2,LOW);
+  digitalWrite(ledGiallo2,HIGH);
+  digitalWrite(ledVerde2,LOW);
 }
 
 void andare() 
 {
-  digitalWrite(led1,LOW);
-  digitalWrite(led2,LOW);
-  digitalWrite(led3,HIGH);
-  digitalWrite(led4,HIGH);
-  digitalWrite(led5,LOW);
-  digitalWrite(led6,LOW);
+  digitalWrite(ledRosso,LOW);
+  digitalWrite(ledGiallo,LOW);
+  digitalWrite(ledVerde,HIGH);
+  digitalWrite(ledRosso2,HIGH);
+  digitalWrite(ledGiallo2,LOW);
+  digitalWrite(ledVerde2,LOW);
 }
 
 void giallo() 
 {
-  digitalWrite(led1,LOW);
-  digitalWrite(led2,HIGH);
-  digitalWrite(led3,LOW);
-  digitalWrite(led4,HIGH);
-  digitalWrite(led5,HIGH);
-  digitalWrite(led6,LOW);
+  digitalWrite(ledRosso,LOW);
+  digitalWrite(ledGiallo,HIGH);
+  digitalWrite(ledVerde,LOW);
+  digitalWrite(ledRosso2,HIGH);
+  digitalWrite(ledGiallo2,HIGH);
+  digitalWrite(ledVerde2,LOW);
 }
-void ledLampeggiante()
+void ledLampeggianteVerde()
 {
-  digitalWrite(led3,LOW);
+  digitalWrite(ledVerde,LOW);
   delay(300);
-  digitalWrite(led3,HIGH);
+  digitalWrite(ledVerde,HIGH);
   delay(300);
 }
-void ledLampeggiante6()
+void ledLampeggianteVerde2()
 {
-  digitalWrite(led6,LOW);
+  digitalWrite(ledVerde2,LOW);
   delay(300);
-  digitalWrite(led6,HIGH);
+  digitalWrite(ledVerde2,HIGH);
   delay(300);
 }
 
 void setup() {
   // put your setup code here, to run once:
  
-pinMode(led1, OUTPUT);
-pinMode(led2, OUTPUT);
-pinMode(led3, OUTPUT);
-pinMode(led4, OUTPUT);
-pinMode(led5, OUTPUT);   
-pinMode(led6, OUTPUT);
+pinMode(ledRosso, OUTPUT);
+pinMode(ledGiallo, OUTPUT);
+pinMode(ledVerde, OUTPUT);
+pinMode(ledRosso2, OUTPUT);
+pinMode(ledGiallo2, OUTPUT);   
+pinMode(ledVerde2, OUTPUT);
 Serial.begin(9600);
 Serial.print("seriale attivato");
 }
