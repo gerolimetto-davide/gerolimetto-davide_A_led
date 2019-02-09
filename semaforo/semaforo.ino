@@ -2,7 +2,7 @@ int ledRosso = 6;
 int ledGiallo = 4;
 int ledVerde = 2;
 int ledRosso2 = 8;
-int ledGialloo2 = 10;
+int ledGiallo2 = 10;
 int ledVerde2 = 12;
 String nlampeggio;
 String tRosso;
@@ -22,15 +22,15 @@ if(Serial.available()>0)
 }
 if(Serial.available()>0)
 {
-  trosso = Serial.readString();
+  tRosso = Serial.readString();
   Serial.println("I received");
-  Serial.println(trosso.toInt());
+  Serial.println(tRosso.toInt());
 }
 if(Serial.available()>0)
 {
-  tgiallo = Serial.readString();
+  tGiallo = Serial.readString();
   Serial.println("I received");
-  Serial.println(tgiallo.toInt());
+  Serial.println(tGiallo.toInt());
 }
 if(Serial.available()>0)
 {
@@ -44,7 +44,7 @@ if(Serial.available()>0)
   Serial.println("I received");
   Serial.println(tempoTotale.toInt());
 }
-tempoTotale=trosso - tgiallo;
+tempoTotale=tRosso.toInt() - tGiallo.toInt();
 fermi();
 delay(5000);
 ledLampeggianteVerde2();
