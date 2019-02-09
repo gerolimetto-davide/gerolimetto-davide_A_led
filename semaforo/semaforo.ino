@@ -8,6 +8,7 @@ String nlampeggio;
 String tRosso;
 String tGiallo;
 String tverde;
+String tempoTotale;
 int tempo = 1000;
 
 void loop() {
@@ -37,6 +38,13 @@ if(Serial.available()>0)
   Serial.println("I received");
   Serial.println(tverde.toInt());
 }
+if(Serial.available()>0)
+{
+  tempoTotale = Serial.readString();
+  Serial.println("I received");
+  Serial.println(tempoTotale.toInt());
+}
+tempoTotale=trosso - tgiallo;
 fermi();
 delay(5000);
 ledLampeggianteVerde2();
